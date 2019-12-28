@@ -11,10 +11,16 @@ class SiteController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $products = Product::paginate(3);
+        //dd($products);
         return view('index', compact('products'));
     }
 

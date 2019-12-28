@@ -6,6 +6,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+//use Session;
 
 class ProductController extends Controller
 {
@@ -15,7 +16,7 @@ class ProductController extends Controller
     }
 
     public function index(){
-        $products = Product::all();
+        $products = Product::paginate(3);
         return view('products.index', compact('products'));
     }
     public function create(){
@@ -39,7 +40,7 @@ class ProductController extends Controller
         }
         Product::create($request_data);
 
-        session()->flash('success', 'Product created.');
+        session()->flash('success', 'Product created successfully.');
 
         return redirect()->route('products.index');
 
@@ -73,7 +74,7 @@ class ProductController extends Controller
             $request_data['image'] = $request->image->hashName();
         }//e
         $product->update($request_data);
-        session()->flash('success', 'product updated');
+        session()->flash('success', 'product updated successfully');
         return redirect()->route('products.index');
 
 
@@ -82,7 +83,7 @@ class ProductController extends Controller
     public function destroy($id){
         $product = Product::find($id);
         $product->delete();
-        session()->flash('success', 'Peoduct deleted');
+        session()->flash('success', 'Product deleted successfully');
     }
 
 }

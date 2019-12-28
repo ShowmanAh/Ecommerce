@@ -17,7 +17,7 @@
                                 </div>
 
                                 <div class="books-item-info">
-                                    <a href="{{ route('product.show', ['id' => $product->id ]) }}">
+                                    <a href="{{ route('product.showproduct', ['id' => $product->id ]) }}">
                                         <h5 class="books-title">{{ $product->name }}</h5>
                                     </a>
 
@@ -32,13 +32,15 @@
                             </div>
                         </div>
                     @endforeach
-                </div>
 
+                </div>
                 <div class="row pb120">
 
                     <div class="col-lg-12">{{ $products->links()  }}</div>
 
                 </div>
+
+
             </div>
         </div>
     </div>

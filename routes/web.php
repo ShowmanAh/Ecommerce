@@ -16,8 +16,15 @@ Route::get('/', function () {
     return view('index');
 });
 */
+Route::get('/', 'SiteController@index'
 
-Route::resource('product', 'SiteController');
+);
+Route::get('/product/{id}', [
+    'uses' => 'SiteController@show',
+    'as' => 'product.showproduct'
+
+]);
+//Route::resource('product', 'SiteController');
 Route::post('/cart/add', [
     'uses' => 'ShoppingController@add_to_cart',
     'as' => 'cart.add'
@@ -45,6 +52,17 @@ Route::get('cart/decrement/{id}/{qty}', [
     'as' => 'cart.decrement'
 
 ]);
+Route::get('cart/checkout', [
+    'uses' => 'CheckoutController@index',
+    'as' => 'cart.checkout'
+
+]);
+Route::post('cart/checkout', [
+    'uses' => 'CheckoutController@puy',
+    'as' => 'cart.checkout'
+
+]);
+
 //Route::post('/cart/add', 'ShoppingController@add_to_cart');
 
 Auth::routes();
