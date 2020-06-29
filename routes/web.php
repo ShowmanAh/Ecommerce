@@ -16,6 +16,10 @@ Route::get('/', function () {
     return view('index');
 });
 */
+
+Route::get('dashboard', function(){
+   return view('dashboard.index');
+});
 Route::get('/', 'SiteController@index'
 
 );
