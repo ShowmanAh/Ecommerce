@@ -27,7 +27,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+       return view('dashboard.users.create');
     }
 
     /**
@@ -38,7 +38,19 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|unique:users',
+            'password'=> 'required',
+
+         ]);
+         $request_data = $request->except(['password', 'password_confirmation']);
+         $request_data['password'] = bcrypt('password');
+       $user = User::create($request_data);
+       //dd($user);
+       session()->flash('success', __('User Added Successfully'));
+
+       return redirect()->route('users.index');
     }
 
     /**
@@ -60,7 +72,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+       $user = User::find($id);
+       return view('dashboard.users.edit', compact('user'));
     }
 
     /**
@@ -72,7 +85,18 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $user = User::find($id);
+       $request->validate([
+        'name'=>'required',
+        'email'=>'required',
+        'password'=> 'required',
+
+     ]);
+     $request_data = $request->except(['password', 'password_confirmation']);
+     $request_data['password'] = bcrypt('password');
+       $user->update($request_data);
+       session()->flash('success', __('User Edited Successfully'));
+       return redirect()->route('users.index');
     }
 
     /**
@@ -83,6 +107,11 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $user = User::find($id);
+      $user->delete();
+      session()->flash('success', __('User Deleted Successfully'));
+
+      return redirect()->route('users.index');
     }
+
 }

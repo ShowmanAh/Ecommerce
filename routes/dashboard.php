@@ -1,9 +1,13 @@
 <?php
 
-Route::get('/', function(){
+Route::get('/dashboard', function(){
     return view('dashboard.index');
  });
- Route::resource('/users', 'Dashboard\UsersController');
+
+ Route::group(['namespace' => 'Dashboard', 'prefix'=>'dashboard'], function() {
+    Route::resource('users', 'UsersController');
+ });
+
 
  Auth::routes();
 ?>
