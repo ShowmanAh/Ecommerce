@@ -47,15 +47,15 @@
             e.preventDefault();
 
             var n = new Noty({
-                text: "@lang('site.confirm_delete')",
+                text: "Confirm Delete",
                 type: "warning",
                 killer: true,
                 buttons: [
-                    Noty.button("@lang('site.yes')", 'btn btn-success mr-2', function () {
+                    Noty.button("YES", 'btn btn-success mr-2', function () {
                         that.closest('form').submit();
                     }),
 
-                    Noty.button("@lang('site.no')", 'btn btn-primary mr-2', function () {
+                    Noty.button("NO", 'btn btn-primary mr-2', function () {
                         n.close();
                     })
                 ]
@@ -79,9 +79,9 @@
             }
 
          });
-/**
+
         CKEDITOR.config.language =  "{{ app()->getLocale() }}";
-*/
+
     });//end of ready
 
 </script>
