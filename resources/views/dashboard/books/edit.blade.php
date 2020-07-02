@@ -46,11 +46,11 @@
                         </div>
                         <div class="form-group">
                             <label for="num_pages"> Number Pages</label>
-                            <input type="number" name="num_pages" step="0.01" class="form-control" value="{{ $book->num_pages}}">
+                            <input type="number" name="num_pages" step="1" class="form-control" value="{{ $book->num_pages}}">
                         </div
                          <div class="form-group">
                             <label for="price">Price</label>
-                            <input type="number" name="price" step="0.01" class="form-control" value="{{ $book->price}}">
+                            <input type="number" name="price" step="1" class="form-control" value="{{ $book->price}}">
                         </div>
                        <div class="form-group">
                             <textarea name="description"  cols="5" rows="10" class="form-control" placeholder="book description">{{ $book->description }}</textarea>

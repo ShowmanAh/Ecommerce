@@ -37,7 +37,7 @@
                             <label for="image">Image</label>
                             <input type="file" name="image" class="form-control image">
                         </div><div class="form-group">
-                           <img src="{{asset('uploads/books/default.jpg')}}" alt="" class="img-thumbnail image-preview" >
+                           <img src="{{asset('uploads/books/default.jpg')}}" alt="" class="img-thumbnail image-preview" style="width: 200px" >
                         </div>
                         <div class="form-group">
                             <label for="date_of_publish">Publish Date</label>
@@ -45,14 +45,14 @@
                         </div>
                         <div class="form-group">
                             <label for="num_pages"> Number Pages</label>
-                            <input type="number" name="num_pages" step="0.01" class="form-control" value="{{ old('num_pages')}}">
+                            <input type="number" name="num_pages" step="1" class="form-control" value="{{ old('num_pages')}}">
                         </div
                          <div class="form-group">
                             <label for="price">Price</label>
-                            <input type="number" name="price" step="0.01" class="form-control" value="{{ old('price')}}">
+                            <input type="number" name="price" step="1" class="form-control" value="{{ old('price')}}">
                         </div>
                        <div class="form-group">
-                            <textarea name="description"  cols="5" rows="10" class="form-control" placeholder="book description"></textarea>
+                            <textarea name="description"  cols="5" rows="10" class="form-control" placeholder="book description">{{ old('description')}}</textarea>
                        </div>
 
                         <div class="form-group">

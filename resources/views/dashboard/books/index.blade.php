@@ -49,6 +49,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Image</th>
                                 <th>Title</th>
                                 <th>Author</th>
                                 <th>Price</th>
@@ -61,6 +62,9 @@
                             @foreach($books as $index=>$book)
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
+                                   <td>
+                                    <img src="{{ $book->image_path}}" alt="" style="width: 50px; box-shadow: 3px 3px 1px #ccc;" class="image-thumbanil image-preview">
+                                   </td>
                                     <td>{{ $book->title}}</td>
 
                                     <td>{{ $book->author }}</td>
