@@ -31,7 +31,7 @@ class BookController extends Controller
             return $query->where('category_id', $request->category_id);
 
         })->latest()->paginate(5);
-   dd($books);
+   //dd($books);
 
        //dd($books);
        return view('dashboard.books.index', compact('categories','books'));
@@ -57,7 +57,16 @@ class BookController extends Controller
     public function store(Request $request)
     {
        $request_data = $this->validate_data($request);
-       $this->image_upload($request);
+      // $this->image_upload($request);
+      if ($request->image) {
+        Image::make($request->image)
+        ->resize(300, null, function ($constraint) {
+            $constraint->aspectRatio();
+        })
+        ->save(public_path('uploads/books/' . $request->image->hashName()));
+
+       $request_data['image'] = $request->image->hashName();
+       }
        Book::create($request_data);
        session()->flash('success', __('Book Added Successfully'));
        return redirect()->route('books.index');

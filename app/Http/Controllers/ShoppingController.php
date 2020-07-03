@@ -15,7 +15,7 @@ class ShoppingController extends Controller
         $this->middleware('auth');
     }
     public function add_to_cart(Request $request){
-//dd(request()->all());
+
 
         $request_data = Product::find($request->product_id);
         $cartItem = Cart::add(
@@ -65,7 +65,7 @@ public function firstAdd($id){
 }
     public function cart(){
         return view('cart');
-    }
+     }
     public function delete_cart($id){
         Cart::remove($id);
         Session::flash('success' , 'Cart Deleted Successfully');

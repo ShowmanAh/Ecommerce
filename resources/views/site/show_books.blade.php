@@ -1,4 +1,4 @@
-@extends('layouts._aside')
+@extends('layouts.site._aside')
 
 @section('content')
 
@@ -12,7 +12,7 @@
                             <div class="swiper-wrapper">
                                 <!-- Slides -->
                                 <div class="product-details-img-wrap swiper-slide">
-                                    <img src="{{  $product->image_path }}" alt="product" data-swiper-parallax="-10">
+                                    <img src="{{  $book->image_path }}" alt="product" data-swiper-parallax="-10">
                                 </div>
                             </div>
                         </div>
@@ -22,9 +22,12 @@
 
                 <div class="col-lg-6 col-lg-offset-1 col-md-6 col-md-offset-1 col-sm-6 col-sm-offset-1 col-xs-12 col-xs-offset-0">
                     <div class="product-details-info">
-                        <div class="product-details-info-price">${{ $product->price }}</div>
-                        <h3 class="product-details-info-title">{{ $product->name }}</h3>
-                        <p class="product-details-info-text">{{ $product->description }}</p>
+                        <div class="product-details-info-price"> <span>Price : </span>{{ $book->price }}$</div>
+                        <h3 class="product-details-info-title"><span>title : </span>{{ $book->title }}</h3>
+                        <h3 class="product-details-info-title"><span>Author : </span>{{ $book->author }}</h3>
+                        <h3 class="product-details-info-title"><span>Pages : </span>{{ $book->num_pages }} page</h3>
+                        <h3 class="product-details-info-title"> <span>Date OF publish : </span>{{ $book->date_of_publish }}</h3>
+                        <p class="product-details-info-text"><span>Description : </span>{{ $book->description }}</p>
 
 
                         <form action="{{ route('cart.add') }}" method="post">
@@ -35,7 +38,7 @@
                                 <a href="#" class="quantity-plus quantity-plus-d">+</a>
                             </div>
 
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <input type="hidden" name="book_id" value="{{ $book->id }}">-
 
 
                             <button class="btn btn-medium btn--primary">

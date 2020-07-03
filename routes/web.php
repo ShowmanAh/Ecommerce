@@ -20,56 +20,60 @@ Route::get('/', function () {
 Route::get('dashboard', function(){
    return view('dashboard.index');
 });
-Route::get('/', 'SiteController@index'
-
-);
-Route::get('/product/{id}', [
-    'uses' => 'SiteController@show',
-    'as' => 'product.showproduct'
-
-]);
-//Route::resource('product', 'SiteController');
-Route::post('/cart/add', [
-    'uses' => 'ShoppingController@add_to_cart',
-    'as' => 'cart.add'
-]);
-Route::get('/cart/firstAdd/{id}', [
-    'uses' => 'ShoppingController@firstAdd',
-    'as' => 'cart.firstAdd'
-]);
-Route::get('/cart',[
-    'uses' => 'ShoppingController@cart',
-    'as' => 'cart'
-] );
-Route::get('cart/delete/{id}', [
-    'uses' => 'ShoppingController@delete_cart',
-    'as' => 'cart.delete'
-
-]);
-Route::get('cart/increment/{id}/{qty}', [
-    'uses' => 'ShoppingController@increment',
-    'as' => 'cart.increment'
-
-]);
-Route::get('cart/decrement/{id}/{qty}', [
-    'uses' => 'ShoppingController@decrement',
-    'as' => 'cart.decrement'
-
-]);
-Route::get('cart/checkout', [
-    'uses' => 'CheckoutController@index',
-    'as' => 'cart.checkout'
-
-]);
-Route::post('cart/checkout', [
-    'uses' => 'CheckoutController@puy',
-    'as' => 'cart.checkout'
-
-]);
-
 //Route::post('/cart/add', 'ShoppingController@add_to_cart');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('products', 'ProductController');
+
+Route::group(['namespace' => 'Site'], function () {
+    Route::get('/', [
+       'uses' => 'SiteController@index',
+       'as' => 'site.books',
+    ]);
+    Route::get('/book/{id}', [
+        'uses' => 'SiteController@show',
+        'as' => 'book.show'
+    ]);
+    Route::post('/cart/add',
+   [
+       'uses' => 'CartController@add_to_cart',
+       'as' => 'cart.add',
+       ]
+    );
+    Route::get('cart', [
+       'uses' =>'CartController@cart',
+       'as' => 'site.cart',
+    ]);
+    Route::get('cart/delete/{id}', [
+        'uses' => 'CartController@delete_cart',
+        'as' => 'cart.delete'
+
+    ]);
+    Route::get('cart/increment/{id}/{qty}', [
+        'uses' => 'CartController@increment',
+        'as' => 'cart.increment'
+
+    ]);
+    Route::get('cart/decrement/{id}/{qty}', [
+        'uses' => 'CartController@decrement',
+        'as' => 'cart.decrement'
+
+    ]);
+    Route::get('cart/checkout', [
+        'uses' => 'CheckoutController@index',
+        'as' => 'cart.checkout'
+
+    ]);
+    Route::post('cart/checkout', [
+        'uses' => 'CheckoutController@puy',
+        'as' => 'cart.checkout'
+
+    ]);
+    Route::get('/cart/firstAdd/{id}', [
+        'uses' => 'CartController@firstAdd',
+        'as' => 'cart.firstAdd'
+    ]);
+});
+
+

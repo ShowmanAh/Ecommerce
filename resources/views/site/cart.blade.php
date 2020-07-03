@@ -1,4 +1,4 @@
-@extends('layouts._aside')
+@extends('layouts.site._aside')
 
 @section('content')
 
@@ -44,9 +44,7 @@
                                     <td class="product-thumbnail">
 
                                         <div class="cart-product__item">
-                                            <a href="#">
-                                                <img src="{{ $cart->image_path }}" alt="product" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
-                                            </a>
+                                           
                                             <div class="cart-product-content">
                                                 <p class="cart-author">{{ $cart->name }}</p>
 
