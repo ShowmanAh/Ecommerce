@@ -44,7 +44,7 @@
                                     <td class="product-thumbnail">
 
                                         <div class="cart-product__item">
-                                           
+
                                             <div class="cart-product-content">
                                                 <p class="cart-author">{{ $cart->name }}</p>
 
@@ -74,24 +74,7 @@
 
                              @endforeach
 
-                                <tr>
-                                    <td colspan="5" class="actions">
-
-                                        <div class="coupon">
-                                            <input name="coupon_code" class="email input-standard-grey" value="" placeholder="Coupon code" type="text">
-                                            <div class="btn btn-medium btn--breez btn-hover-shadow">
-                                                <span class="text">Apply Coupon</span>
-                                                <span class="semicircle--right"></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="btn btn-medium btn--dark btn-hover-shadow">
-                                            <span class="text">Apply Coupon</span>
-                                            <span class="semicircle"></span>
-                                        </div>
-
-                                    </td>
-                                </tr>
+                                
 
                                 </tbody>
                             </table>

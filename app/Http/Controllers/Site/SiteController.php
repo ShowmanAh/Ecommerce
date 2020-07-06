@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class SiteController extends Controller
 {
 public function index(){
-    $books = Book::paginate(6);
+    $books = Book::get();
     //dd($books);
     return view('site.books', compact('books'));
 }

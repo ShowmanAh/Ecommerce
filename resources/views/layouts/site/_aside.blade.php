@@ -40,7 +40,7 @@
 
             <ul class="nav-add">
                 <li class="cart">
-
+                    @if (auth()->user())
                     <a href="#" class="js-cart-animate">
                         <i class="seoicon-basket"></i>
                         <span class="cart-count">{{ Cart::content()->count() }}</span>
@@ -48,17 +48,21 @@
 
                     <div class="cart-popup-wrap">
                         <div class="popup-cart">
+
                             <h4 class="title-cart align-center" style="margin-bottom: 15px;"><span style="color:green;">Total :</span> ${{ Cart::total() }}</h4>
                             <a href="/cart">
                                 <div class="btn btn-small btn--light-green">
-                                    <span class="text">view Cart</span>
+                                    <span class="text">Add Cart</span>
                                 </div>
                             </a>
 
+
+
                         </div>
                     </div>
-
+                    @endif
                 </li>
+
             </ul>
         </div>
 
@@ -73,9 +77,8 @@
         <div class="row pt120">
             <div class="col-lg-8 col-lg-offset-2">
                 <div class="heading align-center mb60">
-                    <h4 class="h1 heading-title">Udemy E-commerce tutorial</h4>
-                    <p class="heading-text">Buy books, and we ship to you.
-                    </p>
+                    <h4 class="h1 heading-title">Welcome, to the universial book day</h4>
+
                 </div>
             </div>
         </div>
@@ -92,6 +95,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div id="copyright">
+                        <p style=" text-align: center;font-weight: bold;">Copyright &copy; 2020 by Showman Ahmed<a style="font-weight: bold;margin-top:50px;margin-right:90px;" href="#"> - Book-Store</a></p>
+                    </div>
                 </div>
             </div>
         </div>

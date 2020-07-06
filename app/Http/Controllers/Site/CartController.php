@@ -10,6 +10,9 @@ use Session;
 
 class CartController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
    public function add_to_cart(Request $request){
       // dd($request->all());
     $request_data = Book::find($request->book_id);

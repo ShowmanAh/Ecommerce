@@ -16,6 +16,14 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        $this->middleware('auth');//check authentication
+        // chech permission for user
+        $this->middleware(['permission:read_books'])->only('index');
+        $this->middleware(['permission:create_books'])->only('create');
+        $this->middleware(['permission:update_books'])->only('update');
+        $this->middleware(['permission:delete_books'])->only('destroy');
+    }
     public function index(Request $request)
     {
         $categories = Category::all();
