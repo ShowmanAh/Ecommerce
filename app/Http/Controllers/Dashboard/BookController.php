@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Book;
+use App\Models\User;
+use App\Jobs\SendMail;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -76,7 +78,10 @@ class BookController extends Controller
        $request_data['image'] = $request->image->hashName();
        }
        Book::create($request_data);
-       session()->flash('success', __('Book Added Successfully'));
+       $emails = User::chunk(50, function($data){
+           dispatch(new SendMail($data));
+       });
+       session()->flash('success', __('Book Added Successfully and send in background'));
        return redirect()->route('books.index');
     }
 
